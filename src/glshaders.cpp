@@ -41,6 +41,17 @@
 
 #include "glshaders.h"
 
+#include <QString>
+#include <QColor>
+#include <QRgb>
+#include <QFile>
+
+//#undef __glext_h_
+//#undef __glxext_h_
+//#undef __gl_h_
+#include <GL/GLee.h>
+//#include <GL/glew.h>
+
 #define GLSHADERS_ASSERT_OPENGL(prefix, assertion, returnStatement)                         \
 if (m_failed || !(assertion)) {                                                             \
     if (!m_failed) qCritical(prefix ": The necessary OpenGL functions are not available."); \
@@ -212,7 +223,7 @@ bool GLProgram::hasParameter(const QString& name)
     GLSHADERS_ASSERT_OPENGL("GLProgram::hasParameter", glGetUniformLocationARB, return false)
 
     if (!failed()) {
-        QByteArray asciiName = name.toAscii();
+        QByteArray asciiName = name.toLatin1();
         return -1 != glGetUniformLocationARB(m_program, asciiName.data());
     }
     return false;
@@ -223,7 +234,7 @@ void GLProgram::setInt(const QString& name, int value)
     GLSHADERS_ASSERT_OPENGL("GLProgram::setInt", glGetUniformLocationARB && glUniform1iARB, return)
 
     if (!failed()) {
-        QByteArray asciiName = name.toAscii();
+        QByteArray asciiName = name.toLatin1();
         int loc = glGetUniformLocationARB(m_program, asciiName.data());
 	    glUniform1iARB(loc, value);
     }
@@ -234,7 +245,7 @@ void GLProgram::setFloat(const QString& name, float value)
     GLSHADERS_ASSERT_OPENGL("GLProgram::setFloat", glGetUniformLocationARB && glUniform1fARB, return)
 
     if (!failed()) {
-        QByteArray asciiName = name.toAscii();
+        QByteArray asciiName = name.toLatin1();
         int loc = glGetUniformLocationARB(m_program, asciiName.data());
 	    glUniform1fARB(loc, value);
     }
@@ -246,7 +257,7 @@ void GLProgram::setColor(const QString& name, QRgb value)
 
     //qDebug() << "Setting color" << name;
     if (!failed()) {
-        QByteArray asciiName = name.toAscii();
+        QByteArray asciiName = name.toLatin1();
         int loc = glGetUniformLocationARB(m_program, asciiName.data());
         //qDebug() << "Location of" << name << "is" << loc;
         QColor color(value);
@@ -259,7 +270,7 @@ void GLProgram::setColor(const QString& name, QRgb value)
 //    GLSHADERS_ASSERT_OPENGL("GLProgram::setMatrix", glGetUniformLocationARB && glUniformMatrix4fvARB, return)
 //
 //    if (!failed()) {
-//        QByteArray asciiName = name.toAscii();
+//        QByteArray asciiName = name.toLatin1();
 //        int loc = glGetUniformLocationARB(m_program, asciiName.data());
 //        //qDebug() << "Location of" << name << "is" << loc;
 //	    glUniformMatrix4fvARB(loc, 1, GL_FALSE, mat.bits());

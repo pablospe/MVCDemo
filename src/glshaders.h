@@ -42,14 +42,12 @@
 #ifndef GLSHADERS_H
 #define GLSHADERS_H
 
-#include "GLee.h" // Should be always included beore other GL stuff
-//#include <GL/glew.h>
-//#include "glextensions.h"
 
-#include <QtGui>
-#include <QtOpenGL>
-
-#include <vector>
+class QString;
+class QColor;
+class QFile;
+typedef unsigned int QRgb;
+typedef unsigned int GLenum;
 
 class GLShader
 {
@@ -62,7 +60,7 @@ protected:
     GLShader(const char *data, int size, GLenum shaderType);
     GLShader(const QString& fileName, GLenum shaderType);
 
-    GLhandleARB m_shader;
+    int m_shader;
     bool m_compileError;
     bool m_failed;
 };
@@ -100,7 +98,7 @@ public:
     //void setMatrix(const QString& name, const gfx::Matrix4x4f &mat);
     // TODO: add a bunch of set-functions for different types.
 private:
-    GLhandleARB m_program;
+    int m_program;
     bool m_linked;
     bool m_linkError;
     bool m_failed;

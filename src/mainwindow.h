@@ -9,8 +9,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QActionGroup>
 #include "sourcewidget.h"
-#include "MVCCLoner.h"
+#include "MVCCloner.h"
 
 class QLabel;
 class GLWidget;

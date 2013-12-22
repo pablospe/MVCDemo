@@ -4,9 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui opengl
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT       += core widgets gui opengl
 
 TARGET = MVCDemo
 TEMPLATE = app
@@ -19,7 +17,6 @@ SOURCES += glshaders.cpp \
            mvcshaders.cpp \
            utils.cpp \
            glwidget.cpp \
-           mvcdemo.cpp \
            sourcewidget.cpp
 
 HEADERS  += glshaders.h \
@@ -30,12 +27,7 @@ HEADERS  += glshaders.h \
             mvcshaders.h \
             utils.h \
             CoordinatesMesh.h \
-            mvcdemo.h \
             sourcewidget.h
-
-FORMS    +=
-
-RESOURCES +=
 
 # using pkg-config
 linux {

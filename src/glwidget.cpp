@@ -1,6 +1,3 @@
-//#include "GLee.h" // Should be always included beore other GL stuff
-
-//#include "glshaders.h"
 #include "glwidget.h"
 #include "mvcshaders.h";
 #include <iostream>
@@ -10,11 +7,8 @@
 #include <math.h>
 #include "utils.h"
 
-
-//#include "CoreFoundation/CoreFoundation.h" // Load from resource dir inside the bundle 
 #include <QCoreApplication>
-
-
+#include <GL/glu.h>
 
 GLWidget::GLWidget(QWidget *parent)
 : QGLWidget(parent){

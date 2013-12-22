@@ -5,7 +5,7 @@
  ** Farbman, Hoffer, Cohen-Or, Lipman and Lischinski 2009
  ****************************************************************************/
 
-#include <QtGui/QApplication>
+#include <QApplication>
 #include "mainwindow.h"
 
 int main(int argc, char *argv[]){

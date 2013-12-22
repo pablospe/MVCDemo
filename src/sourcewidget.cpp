@@ -1,6 +1,7 @@
 
 
 #include <QtGui>
+#include <QMessageBox>
 #include <iostream>
 #include "sourcewidget.h"
 #include "glwidget.h"
