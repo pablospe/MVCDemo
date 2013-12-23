@@ -48,6 +48,7 @@ class QColor;
 class QFile;
 typedef unsigned int QRgb;
 typedef unsigned int GLenum;
+typedef unsigned int GLhandleARB;
 
 class GLShader
 {
@@ -60,7 +61,7 @@ protected:
     GLShader(const char *data, int size, GLenum shaderType);
     GLShader(const QString& fileName, GLenum shaderType);
 
-    int m_shader;
+    GLhandleARB m_shader;
     bool m_compileError;
     bool m_failed;
 };
@@ -98,7 +99,7 @@ public:
     //void setMatrix(const QString& name, const gfx::Matrix4x4f &mat);
     // TODO: add a bunch of set-functions for different types.
 private:
-    int m_program;
+    GLhandleARB m_program;
     bool m_linked;
     bool m_linkError;
     bool m_failed;
