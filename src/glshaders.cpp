@@ -46,11 +46,7 @@
 #include <QRgb>
 #include <QFile>
 
-//#undef __glext_h_
-//#undef __glxext_h_
-//#undef __gl_h_
-#include <GL/GLee.h>
-//#include <GL/glew.h>
+#include <GL/glew.h>
 
 #define GLSHADERS_ASSERT_OPENGL(prefix, assertion, returnStatement)                         \
 if (m_failed || !(assertion)) {                                                             \
