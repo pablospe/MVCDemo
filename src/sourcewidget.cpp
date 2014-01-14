@@ -147,6 +147,7 @@ QPoint SourceWidget::findStartingFromDir(QPolygonF & selectionPoly, int x, int y
     
     //throw std::exception();
 	assert("Wrong path in findStartingFromDir");
+    return QPoint(-1,-1);
 }
 
 
@@ -201,8 +202,6 @@ void SourceWidget::mouseReleaseEvent(QMouseEvent *event)
 			return;
 		}
 		
-        QPoint start = cPoint;
-
         // Track the boundary of the selection
         std::vector<Point> boundaryVector;
         
