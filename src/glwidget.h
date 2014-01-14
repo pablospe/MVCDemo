@@ -11,6 +11,7 @@
 #include "glshaders.h"
 
 #include <QGLWidget>
+#include <QtGui/QOpenGLShaderProgram>
 #include <iostream>
 #include "MVCCloner.h"
 
@@ -105,7 +106,6 @@ public:
 	
 	void notInit() { init = false; }
 	
-	void compileAttachLinkShader(QString & vs_filename, QString & fs_filename);
 	void compileAttachLinkShaderFromSource(const std::string& vs, const std::string& fs);
 
 	void errCheck(QString mymsg = QString());
@@ -142,10 +142,8 @@ private:
 
     GLenum target; // as in texture target (not source/target)
     GLuint tex0_id, tex1_id, tex2_id, tex3_id;
-	
-	GLVertexShader * m_vertexShader;
-	GLFragmentShader * m_fragmentShader;
-	GLProgram * m_program;
+
+    QOpenGLShaderProgram *m_program;
 
     int click_x, click_y; // Coordinates of the mouse click which started the current event
 	

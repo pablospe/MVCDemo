@@ -1,5 +1,5 @@
 #include "glwidget.h"
-#include "mvcshaders.h";
+#include "mvcshaders.h"
 #include <iostream>
 #include <QtGui>
 #include <QtOpenGL>
@@ -75,47 +75,24 @@ void GLWidget::loadShaders(){
 }
 
 void GLWidget::compileAttachLinkShaderFromSource(const std::string& vs, const std::string& fs) {
-	m_vertexShader = new GLVertexShader(vs.c_str(), vs.length());
-	m_fragmentShader = new GLFragmentShader(fs.c_str(), fs.length());
-	m_program = new GLProgram;
-	m_program->attach(*m_vertexShader);
-	m_program->attach(*m_fragmentShader);
-	if (m_program->failed()) {
+    m_program = new QOpenGLShaderProgram(this);
+    const QString qvs(vs.c_str());
+    const QString qfs(fs.c_str());
+
+    if (!m_program->addShaderFromSourceCode(QOpenGLShader::Vertex, qvs)) {
+        qWarning("Vertex shader compilation failed");
+    }
+
+    if (!m_program->addShaderFromSourceCode(QOpenGLShader::Fragment, qfs)) {
+        qWarning("Fragment shader compilation failed");
+    }
+
+    if (!m_program->link()) {
 		qWarning("Failed to compile and link shader program");
-		qWarning("Vertex shader log:");
-		qWarning() << m_vertexShader->log();
-		qWarning() << "Fragment shader log:";
-		qWarning() << m_fragmentShader->log();
 		qWarning("Shader program log:");
 		qWarning() << m_program->log();
-
-		delete m_vertexShader;
-		delete m_fragmentShader;
 		delete m_program;
 	}
-}
-
-void GLWidget::compileAttachLinkShader(QString & vs_filename, QString & fs_filename){
-    
-	m_vertexShader = new GLVertexShader(vs_filename);
-	m_fragmentShader = new GLFragmentShader(fs_filename);
-	m_program = new GLProgram;
-	m_program->attach(*m_vertexShader);
-    m_program->attach(*m_fragmentShader);
-	if (m_program->failed()) {
-		qWarning("Failed to compile and link shader program");
-		qWarning("Vertex shader log:");
-		qWarning() << m_vertexShader->log();
-		qWarning() << "Fragment shader log:";
-		qWarning() << m_fragmentShader->log();
-		qWarning("Shader program log:");
-		qWarning() << m_program->log();
-		
-		delete m_vertexShader;
-		delete m_fragmentShader;
-		delete m_program;
-	}
-	
 }
 
 void GLWidget::paintGL(){
@@ -166,22 +143,23 @@ void GLWidget::paintSelection(){
     
     // Enable the GLSL program
 	m_program->bind();
-	// and pass data inside
-	m_program->setInt("tex0", 0);
-	m_program->setInt("tex1", 1);
-	m_program->setInt("tex2", 2);
-	m_program->setInt("tex3", 3);
-    m_program->setInt("mode", mode);
+
+    // and pass data inside
+    m_program->setAttributeValue("tex0", 0);
+    m_program->setAttributeValue("tex1", 1);
+    m_program->setAttributeValue("tex2", 2);
+    m_program->setAttributeValue("tex3", 3);
+    m_program->setAttributeValue("mode", mode);
 	
     if(method==HIER1 || method==HIER2){
-		m_program->setFloat("target_h", target_h);
-		m_program->setFloat("source_h", selection_h);
+        m_program->setAttributeValue("target_h", target_h);
+        m_program->setAttributeValue("source_h", selection_h);
     }else if(method==ADAP1){
-		m_program->setInt("blend", 0);
-		m_program->setInt("boundarySize", selection.boundarySize);
+        m_program->setAttributeValue("blend", 0);
+        m_program->setAttributeValue("boundarySize", selection.boundarySize);
 	}else if(method==ADAP2){
-		m_program->setInt("blend", 1);
-		m_program->setInt("boundarySize", selection.boundarySize);
+        m_program->setAttributeValue("blend", 1);
+        m_program->setAttributeValue("boundarySize", selection.boundarySize);
 	}
     
     float fx=selection.tx+selection.dx;
@@ -224,7 +202,7 @@ void GLWidget::paintSelection(){
         
         glEnd();
     }
-    m_program->unbind(); //glUseProgram(0);
+    m_program->release();
 }
 
 void GLWidget::paintMesh(){
