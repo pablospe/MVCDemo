@@ -33,3 +33,5 @@ linux {
     QMAKE_CXXFLAGS += -frounding-math
 }
 LIBS += -lCGAL -lgmp
+
+RESOURCES += images/images.qrc

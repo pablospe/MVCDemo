@@ -46,8 +46,11 @@ set(HEADERS ${SRC_DIR}/CloningParameters.h
 # Includes
 include_directories(${GLU_INCLUDE_PATH} ${CGAL_INCLUDE_DIRS})
 
+# Add Qt resources
+qt5_add_resources(RESOURCES ${CMAKE_CURRENT_SOURCE_DIR}/images/images.qrc)
+
 # Create an executable.
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${RESOURCES})
 
 # Use Qt modules.
 qt5_use_modules(${PROJECT_NAME} Core Gui OpenGL)

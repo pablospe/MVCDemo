@@ -216,8 +216,8 @@ void MainWindow::createMenus(){
 
 void MainWindow::quickOpen(){
 
-    QString source("./source.jpg");
-    QString target("./target.jpg");	
+    QString source(":/source.jpg");
+    QString target(":/target.jpg");
 #ifdef MACOSX
 	setResourcesDir();
 #endif
@@ -283,6 +283,7 @@ void MainWindow::saveImage(){
 }
 
 void MainWindow::keyPressEvent(QKeyEvent * event){
+    Q_UNUSED(event)
 	// All the keyboard shortcuts are delegated via QAction
 	;
 //    switch( event->key() )
