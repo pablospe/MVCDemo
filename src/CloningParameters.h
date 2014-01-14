@@ -4,8 +4,13 @@
 
 class CloningParameters {
 public:
-	CloningParameters() : hierarchic(false), angleThreshold(0.75), distanceThreshold(2.5), 
-	adaptiveMeshShapeCriteria(0.125), adaptiveMeshSizeCriteria(0), minimalHierarchicResolution(16), angleExponentBase(0.8) {};
+    CloningParameters() : hierarchic(false),
+                          angleThreshold(0.75),
+                          angleExponentBase(0.8),
+                          distanceThreshold(2.5),
+                          adaptiveMeshShapeCriteria(0.125),
+                          adaptiveMeshSizeCriteria(0),
+                          minimalHierarchicResolution(16) {};
 	
 	void setHierarchic(const bool isHierarchic=true) {
 		this->hierarchic = isHierarchic;
