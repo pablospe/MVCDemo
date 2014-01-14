@@ -216,8 +216,8 @@ void MainWindow::createMenus(){
 
 void MainWindow::quickOpen(){
 
-    QString source(":/source.jpg");
-    QString target(":/target.jpg");
+    QString source(":/images/source.jpg");
+    QString target(":/images/target.jpg");
 #ifdef MACOSX
 	setResourcesDir();
 #endif
