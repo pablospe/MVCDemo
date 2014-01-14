@@ -25,9 +25,8 @@ HEADERS  += $${SRC_DIR}/CloningParameters.h \
 # using pkg-config
 linux {
     CONFIG += link_pkgconfig
-    PKGCONFIG += glew glu
+    PKGCONFIG += glu
 }
-LIBS += -lGLEW -lGLU
 
 # CGAL
 *-g++* {

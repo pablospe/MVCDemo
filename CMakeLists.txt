@@ -14,11 +14,8 @@ find_package(Qt5Gui REQUIRED)
 find_package(Qt5OpenGL REQUIRED)
 
 # Dependencies
-find_package(GLEW REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(CGAL REQUIRED)
-# find_package(GLU REQUIRED)
-# find_package(GMP REQUIRED)
 
 # CGAL: Wrong rounding: -frounding-math option with GCC
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
@@ -47,7 +44,7 @@ set(HEADERS ${SRC_DIR}/CloningParameters.h
 )
 
 # Includes
-include_directories(${GLEW_INCLUDE_DIRS} ${GLU_INCLUDE_PATH} ${CGAL_INCLUDE_DIRS})
+include_directories(${GLU_INCLUDE_PATH} ${CGAL_INCLUDE_DIRS})
 
 # Create an executable.
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
