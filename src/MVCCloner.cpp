@@ -277,7 +277,7 @@ double* MVCCloner::getCoordinates(const std::vector<Point>& curve, const Point& 
 		
         if (len1 < 1) {
 			
-            for (int i=0 ; i< cageSize ; ++i) {    coords[i] = 0;    }
+            for (int j=0 ; j< cageSize ; ++j) {    coords[j] = 0;    }
 			
             coords[i] = 1;
 			
@@ -289,7 +289,7 @@ double* MVCCloner::getCoordinates(const std::vector<Point>& curve, const Point& 
 		
         if (len2 < 1) {
 			
-            for (int i=0 ; i< cageSize ; ++i) {    coords[i] = 0;    }
+            for (int j=0 ; j< cageSize ; ++j) {    coords[j] = 0;    }
 			
             coords[i2] = 1;
 			
