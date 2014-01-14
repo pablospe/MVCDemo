@@ -27,7 +27,6 @@ set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(SOURCES ${SRC_DIR}/glwidget.cpp
             ${SRC_DIR}/main.cpp
             ${SRC_DIR}/mainwindow.cpp
-            ${SRC_DIR}/mvcshaders.cpp
             ${SRC_DIR}/MVCCloner.cpp
             ${SRC_DIR}/sourcewidget.cpp
             ${SRC_DIR}/utils.cpp
@@ -47,7 +46,9 @@ set(HEADERS ${SRC_DIR}/CloningParameters.h
 include_directories(${GLU_INCLUDE_PATH} ${CGAL_INCLUDE_DIRS})
 
 # Add Qt resources
-qt5_add_resources(RESOURCES ${CMAKE_CURRENT_SOURCE_DIR}/images/images.qrc)
+qt5_add_resources(RESOURCES ${CMAKE_CURRENT_SOURCE_DIR}/images/images.qrc
+                            ${CMAKE_CURRENT_SOURCE_DIR}/src/shaders.qrc
+)
 
 # Create an executable.
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${RESOURCES})

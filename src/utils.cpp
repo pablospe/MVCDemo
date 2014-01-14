@@ -6,6 +6,7 @@
 #include <QString>
 #include <QImage>
 #include <QtGui>
+#include <QFile>
 
 
 void copyImageToSubImage(QImage & src, QImage & trg, int startx, int starty) {
@@ -37,4 +38,18 @@ QImage *  createMipMap(const QImage & img) {
 	}
 	
 	return mipmap;
+}
+
+QString readFileContent(const QString &filename)
+{
+    QFile file(filename);
+    if(!file.open(QFile::ReadOnly|QFile::Text)){
+        qDebug() << "Could not open file: " << filename;
+        return QString();
+    }
+
+    QString data(file.readAll());
+    file.close();
+
+    return data;
 }

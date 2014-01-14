@@ -104,7 +104,7 @@ public:
 	
 	void notInit() { init = false; }
 	
-	void compileAttachLinkShaderFromSource(const std::string& vs, const std::string& fs);
+    void compileAttachLinkShaderFromSource(const QString& vs, const QString& fs);
 
 	void errCheck(QString mymsg = QString());
 	void bindSource();

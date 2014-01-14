@@ -32,7 +32,7 @@ GLWidget::GLWidget(QWidget *parent)
 	selection.flip = 0.0;
 	selection.scale = 1.0;	
 	
-	method = HIER1;
+    method = HIER1;
 	
 	sourceImage = NULL;
 	targetImage = NULL;
@@ -74,16 +74,14 @@ void GLWidget::loadShaders(){
     }		
 }
 
-void GLWidget::compileAttachLinkShaderFromSource(const std::string& vs, const std::string& fs) {
+void GLWidget::compileAttachLinkShaderFromSource(const QString& vs, const QString& fs) {
     m_program = new QOpenGLShaderProgram(this);
-    const QString qvs(vs.c_str());
-    const QString qfs(fs.c_str());
 
-    if (!m_program->addShaderFromSourceCode(QOpenGLShader::Vertex, qvs)) {
+    if (!m_program->addShaderFromSourceCode(QOpenGLShader::Vertex, vs)) {
         qWarning("Vertex shader compilation failed");
     }
 
-    if (!m_program->addShaderFromSourceCode(QOpenGLShader::Fragment, qfs)) {
+    if (!m_program->addShaderFromSourceCode(QOpenGLShader::Fragment, fs)) {
         qWarning("Fragment shader compilation failed");
     }
 

@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/src">
+        <file>AlphaFS.glsl</file>
+        <file>AlphaVS.glsl</file>
+        <file>Sampling2DFilterVS.glsl</file>
+        <file>SamplingFS.glsl</file>
+        <file>SamplingVS.glsl</file>
+    </qresource>
+</RCC>

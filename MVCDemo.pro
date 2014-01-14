@@ -8,7 +8,6 @@ SRC_DIR = $${PWD}/src
 SOURCES += $${SRC_DIR}/glwidget.cpp \
            $${SRC_DIR}/main.cpp \
            $${SRC_DIR}/mainwindow.cpp \
-           $${SRC_DIR}/mvcshaders.cpp \
            $${SRC_DIR}/MVCCloner.cpp \
            $${SRC_DIR}/sourcewidget.cpp \
            $${SRC_DIR}/utils.cpp
@@ -34,4 +33,5 @@ linux {
 }
 LIBS += -lCGAL -lgmp
 
-RESOURCES += images/images.qrc
+RESOURCES += images/images.qrc \
+             src/shaders.qrc

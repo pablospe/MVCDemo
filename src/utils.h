@@ -10,7 +10,11 @@
 #define UTILS_H
 
 class QImage;
+class QString;
+
 QImage * createMipMap(const QImage &);
+QString readFileContent(const QString &filename);
+
 
 #endif
 
