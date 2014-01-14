@@ -27,8 +27,7 @@ endif()
 
 set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
-set(SOURCES ${SRC_DIR}/glshaders.cpp
-            ${SRC_DIR}/glwidget.cpp
+set(SOURCES ${SRC_DIR}/glwidget.cpp
             ${SRC_DIR}/main.cpp
             ${SRC_DIR}/mainwindow.cpp
             ${SRC_DIR}/mvcshaders.cpp
@@ -39,7 +38,6 @@ set(SOURCES ${SRC_DIR}/glshaders.cpp
 
 set(HEADERS ${SRC_DIR}/CloningParameters.h
             ${SRC_DIR}/CoordinatesMesh.h
-            ${SRC_DIR}/glshaders.h
             ${SRC_DIR}/glwidget.h
             ${SRC_DIR}/mainwindow.h
             ${SRC_DIR}/mvcshaders.h
