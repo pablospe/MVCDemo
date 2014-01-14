@@ -8,8 +8,6 @@
 #ifndef GLWIDGET_H
 #define GLWIDGET_H
 
-#include "glshaders.h"
-
 #include <QGLWidget>
 #include <QtGui/QOpenGLShaderProgram>
 #include <iostream>

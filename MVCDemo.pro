@@ -5,8 +5,7 @@ TEMPLATE = app
 
 SRC_DIR = $${PWD}/src
 
-SOURCES += $${SRC_DIR}/glshaders.cpp \
-           $${SRC_DIR}/glwidget.cpp \
+SOURCES += $${SRC_DIR}/glwidget.cpp \
            $${SRC_DIR}/main.cpp \
            $${SRC_DIR}/mainwindow.cpp \
            $${SRC_DIR}/mvcshaders.cpp \
@@ -16,7 +15,6 @@ SOURCES += $${SRC_DIR}/glshaders.cpp \
 
 HEADERS  += $${SRC_DIR}/CloningParameters.h \
             $${SRC_DIR}/CoordinatesMesh.h \
-            $${SRC_DIR}/glshaders.h \
             $${SRC_DIR}/glwidget.h \
             $${SRC_DIR}/mainwindow.h \
             $${SRC_DIR}/mvcshaders.h \
