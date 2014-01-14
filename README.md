@@ -1,6 +1,6 @@
 This is a demo implementation of some of the aspects in Farbman et. al. Coordinates for Instant Image Cloning SIGGRAPH 2009 paper.
 
-This is a effor to make this code work with QT5.
+This is an effort to make work this code on QT5.
 
 ## How to compile with cmake?
     > mkdir build
