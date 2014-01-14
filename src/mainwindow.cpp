@@ -55,6 +55,11 @@ void MainWindow::createActions(){
     saveImageAct->setShortcut(QKeySequence::Save);
     saveImageAct->setStatusTip(tr("Save the result"));
     connect(saveImageAct, SIGNAL(triggered()), this, SLOT(saveImage()));
+
+    quitAct = new QAction(tr("&Quit"), this);
+    quitAct->setShortcut(tr("Ctrl+Q"));
+    quitAct->setStatusTip(tr("Quit"));
+    connect(quitAct, SIGNAL(triggered()), this, SLOT(close()));
 	
 	aboutAct = new QAction(tr("&About"), this);
 	aboutAct->setStatusTip(tr("About MVCloner"));
@@ -169,6 +174,8 @@ void MainWindow::createMenus(){
     fileMenu->addAction(quickOpenAct);
 	fileMenu->addSeparator();
     fileMenu->addAction(saveImageAct);
+    fileMenu->addSeparator();
+    fileMenu->addAction(quitAct);
 	menuBar()->addMenu(fileMenu);
 	
 	viewMenu = new QMenu(tr("&View"), this);

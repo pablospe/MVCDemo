@@ -87,6 +87,7 @@ private:
     QAction * openImagesAct;
     QAction * quickOpenAct;
     QAction * saveImageAct;
+    QAction * quitAct;
 	QAction * aboutAct;
 	QAction * optionsAct;
 	
