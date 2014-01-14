@@ -443,17 +443,9 @@ void GLWidget::updateSelection(std::vector<Point> & boundaryVector, QPolygonF & 
 	
 	QRectF bb = selectionPoly.boundingRect();
 	QPolygonF rect(bb);
-	
-	QPolygonF substr = selectionPoly.subtracted(rect);
-	
+	    
     for (FiniteFacesIterator iter = adaptiveMesh->finite_faces_begin() ; iter != adaptiveMesh->finite_faces_end() ; ++iter)
-    {
-        Triangle triangle = adaptiveMesh->triangle(iter);
-        Point v1 = triangle.vertex(0);
-        Point v2 = triangle.vertex(1);
-        Point v3 = triangle.vertex(2);
-        
-		
+    {	
         if ((*iter).is_in_domain()) {
 			selection.numTriangles++;
             trianglesToSkip[i] = false;
@@ -467,9 +459,10 @@ void GLWidget::updateSelection(std::vector<Point> & boundaryVector, QPolygonF & 
 	qDebug() << selection.numTriangles << " inside the selection.";
     i = 0; int j = 0;
 	// Add triangles
+
     for (FiniteFacesIterator iter = adaptiveMesh->finite_faces_begin() ; iter != adaptiveMesh->finite_faces_end() ; ++iter)
     {
-        Triangle triangle = adaptiveMesh->triangle(iter);
+        const Triangle &triangle = adaptiveMesh->triangle(iter);
         Point v1 = triangle.vertex(0);
         int index1 = mapping[v1];
         Point v2 = triangle.vertex(1);
