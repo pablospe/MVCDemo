@@ -16,5 +16,13 @@ QImage * createMipMap(const QImage &);
 QString readFileContent(const QString &filename);
 
 
+/* Usage:
+ *
+ *     [... some opengl calls]
+ *     check_gl_error();
+ */
+void _check_gl_error(const char *file, int line);
+#define check_gl_error() _check_gl_error(__FILE__,__LINE__)
+
 #endif
 

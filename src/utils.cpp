@@ -1,6 +1,7 @@
 
 #include "utils.h"
 #include <iostream>
+#include <string>
 #include <QCoreApplication>
 #include <QDir>
 #include <QString>
@@ -52,4 +53,46 @@ QString readFileContent(const QString &filename)
     file.close();
 
     return data;
+}
+
+
+void _check_gl_error(const char *file, int line)
+{
+    GLenum err = glGetError();
+
+    while (err != GL_NO_ERROR)
+    {
+        std::string error;
+
+        switch (err)
+        {
+        // The specified operation is not allowed in the current state. The offending command is ignored and has no other side effect than to set the error flag.
+        case GL_INVALID_OPERATION:
+            error = "GL_INVALID_OPERATION";
+            break;
+
+        // An unacceptable value is specified for an enumerated argument. The offending command is ignored and has no other side effect than to set the error flag.
+        case GL_INVALID_ENUM:
+            error = "GL_INVALID_ENUM";
+            break;
+
+        // A numeric argument is out of range. The offending command is ignored and has no other side effect than to set the error flag.
+        case GL_INVALID_VALUE:
+            error = "GL_INVALID_VALUE";
+            break;
+
+        // There is not enough memory left to execute the command. The state of the GL is undefined, except for the state of the error flags, after this error is recorded.
+        case GL_OUT_OF_MEMORY:
+            error = "GL_OUT_OF_MEMORY";
+            break;
+
+        // The command is trying to render to or read from the framebuffer while the currently bound framebuffer is not framebuffer complete (i.e. the return value from glCheckFramebufferStatus is not GL_FRAMEBUFFER_COMPLETE). The offending command is ignored and has no other side effect than to set the error flag.
+        case GL_INVALID_FRAMEBUFFER_OPERATION:
+            error = "GL_INVALID_FRAMEBUFFER_OPERATION";
+            break;
+        }
+
+        std::cout << "glGetError::" << error.c_str() << " - " << file << ":" << line << std::endl;
+        err = glGetError();
+    }
 }

@@ -1,6 +1,6 @@
 #include "glwidget.h"
 #include "mvcshaders.h"
-#include <iostream>
+#include "utils.h"
 #include <QtGui>
 #include <QtOpenGL>
 
@@ -504,8 +504,9 @@ void GLWidget::updateSelection(std::vector<Point> & boundaryVector, QPolygonF & 
     glTexParameteri(target,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
     glTexParameteri(target,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
     glTexImage2D(target, 0, GL_LUMINANCE32F_ARB, selection.boundarySize, 2, 0, GL_LUMINANCE, GL_FLOAT, selection.boundaryCoordsTex);
-	errCheck("tex3_id");
-    
+    // errCheck("tex3_id");
+    check_gl_error();
+
     // Weights
     if (method==HIER1 || method==HIER2)	{
 		int maxRelevantWeights = cloner.maxRelevantWeights;
@@ -553,7 +554,8 @@ void GLWidget::updateSelection(std::vector<Point> & boundaryVector, QPolygonF & 
 		glTexParameteri(target,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
 		glTexParameteri(target,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
 		glTexImage2D(target, 0, GL_RGB32F_ARB, maxRelevantWeights, selection.numPoints, 0, GL_RGB, GL_FLOAT, WID) ;
-		errCheck(QString("Line 579"));	
+        // errCheck(QString("Line 579"));
+        check_gl_error();
         delete[] WID;
     }
     else {
