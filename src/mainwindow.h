@@ -26,6 +26,8 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow();
+
+    void show() { QMainWindow::show(); quickOpen(); }
 	
 protected:
     void keyPressEvent(QKeyEvent * event);
